@@ -1,40 +1,37 @@
-const leituraEscrita = require('../01/index')
-
-type Endereco = {
-    cep: number,
-    rua: string,
-    complemento?: string,
-    bairro: string,
-    cidade: string
-}
-
-type Usuario = {
-    nome: string,
-    email: string,
-    cpf: number,
-    profissao?: string,
-    endereco: Endereco | null
-}
+import {lerArquivo, escreverArquivo} from "../01/index";
+import { Usuario, Endereco } from "../index"
 
 const cadastrarUsuario = (dados: Usuario): Usuario => {
-    const bd = leituraEscrita.lerArquivo() as Usuario[];    
+    const bd = lerArquivo() as Usuario[];    
     bd.push(dados)
-    leituraEscrita.escreverArquivo(bd)
+    escreverArquivo(bd)
     return dados
 }
 
 const listarUsuario = (): Usuario[] => {
-    return leituraEscrita.lerArquivo() as Usuario[];    
+    return lerArquivo() as Usuario[];    
 }
 
+// cadastrarUsuario({
+//     nome : 'gadac',
+//     email: 'fandanguin@mail',
+//     cpf: 12345678912,
+//     endereco: {
+//         cep: 12345678,
+//         rua: 'eldorado',
+//         bairro: 'eldorado',
+//         cidade: 'serra'
+//     }
+// })
+
 cadastrarUsuario({
-    nome : 'gadac',
-    email: 'fandanguin@mail',
-    cpf: 12345678912,
+    nome : 'victor',
+    email: 'dr.victor@mail',
+    cpf: 23456789123,
     endereco: {
         cep: 12345678,
         rua: 'eldorado',
-        bairro: 'eldorado',
+        bairro: 'serrasede',
         cidade: 'serra'
     }
 })

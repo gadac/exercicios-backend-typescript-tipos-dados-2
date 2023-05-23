@@ -8,7 +8,7 @@ const escreverArquivo = (dados: any): void => {
     fs.writeFileSync('../bd.json', JSON.stringify(dados))
 }
 
-module.exports = {
+export {
     lerArquivo,
     escreverArquivo
 }
